@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_library_book_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="isbn"/>
+                <field name="author_id"/>
+                <filter string="Disponibles" name="available" domain="[('state', '=', 'available')]"/>
+                <filter string="Prestados" name="borrowed" domain="[('state', '=', 'borrowed')]"/>
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Autor" name="group_author" context="{'group_by': 'author_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="author_id"/>
+                            <field name="isbn"/>
+                        </group>
+                        <group>
+                            <field name="borrower_id" required="state == 'borrowed'"/>
+                            <field name="active" invisible="1"/> </group>
+                    </group>
+                    <notebook>
+                        <page string="Descripción">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_book_list" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'lost'" decoration-info="state == 'borrowed'">
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="isbn"/>
+                <field name="borrower_id"/>
+                <field name="state" widget="badge" 
+                       decoration-success="state == 'available'" 
+                       decoration-warning="state == 'borrowed'" 
+                       decoration-danger="state == 'lost'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Libros</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                ¡Crea tu primer libro!
+            </p>
+        </field>
+    </record>
+
+</odoo>

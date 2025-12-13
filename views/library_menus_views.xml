@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_library_root"
+              name="Biblioteca"
+              sequence="10"
+              web_icon="gestion_biblioteca,static/description/icon.png"/>
+
+    <menuitem id="menu_library_management"
+              name="Gestión"
+              parent="menu_library_root"
+              sequence="10"/>
+
+    <menuitem id="menu_library_book"
+              name="Libros"
+              parent="menu_library_management"
+              action="action_library_book"
+              sequence="10"/>
+
+    <menuitem id="menu_library_author"
+              name="Autores"
+              parent="menu_library_management"
+              action="action_library_author"
+              sequence="20"/>
+
+</odoo>
