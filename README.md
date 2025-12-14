@@ -20,4 +20,4 @@ Permite la gestión de libros, autores y el control de préstamos dentro de una 
 ## Instalación
 1. Clona este repositorio en tu carpeta de `custom_addons` de Odoo:
    ```bash
-   git clone [https://github.com/erigdip/gestion_biblioteca.git](https://github.com/erigdip/gestion_biblioteca.git)
+   git clone https://github.com/erigdip/gestion_biblioteca.git
