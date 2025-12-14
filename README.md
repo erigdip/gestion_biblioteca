@@ -21,3 +21,11 @@ Permite la gestión de libros, autores y el control de préstamos dentro de una 
 1. Clona este repositorio en tu carpeta de `custom_addons` de Odoo:
    ```bash
    git clone https://github.com/erigdip/gestion_biblioteca.git
+
+2. Reinicia el servicio de Odoo.
+
+3. Activa el "Modo Desarrollador" en Odoo.
+
+4. Ve a Aplicaciones, haz clic en "Actualizar lista de aplicaciones". 
+
+5. Instala el módulo de Biblioteca (gestion_biblioteca).
